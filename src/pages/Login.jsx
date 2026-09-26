@@ -36,10 +36,39 @@ export default function Login({ setIsAuth, SetUsuarioLogado}) {
                 <form onSubmit={handleLogin}>
                     <label>
                         Usuário
-                        <div className="input-wrap"></div>
+                        <div className="input-wrap">
+                            <User size={18} />
+                            <input
+                            placeholder="Digite seu usuário"
+                            value={usuario}
+                            onChange={(e) => setUsuario(e.target.value)}
+                            />
+                        </div>
                     </label>
+
+                    <label>
+                        Senha
+                        <div className="input-wrap">
+                            <LockKeyhole size={18} />
+                            <input
+                            type="password"
+                            placeholder="Digite sua senha"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                            />
+                        </div>
+                    </label>
+
+                    {erro && <p className="error">{erro}</p>}
+
+                    <button className="primary" type="submit">Entrar</button>
                 </form>
+
+                <p className="switch-text">
+                    Não tem conta?{" "}
+                    <button className="link-button" onClick={() => navigate('/cadastro')}>Cadastre-se</button>
+                </p>
             </section>
         </main>
-    )
+    );
 }
